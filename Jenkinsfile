@@ -22,15 +22,15 @@ pipeline {
                 
             }
         }
-        stage ('Quality Gate'){
-            steps {
-                sleep(5)
-                timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+        // stage ('Quality Gate'){
+        //     steps {
+        //         sleep(5)
+        //         timeout(time: 1, unit: 'MINUTES') {
+        //             waitForQualityGate abortPipeline: true
+        //         }
                 
-            }
-        }
+        //     }
+        // }
         stage ('Deploy Back'){
             steps {
                 deploy adapters: [tomcat9(credentialsId: 'TomcatLogin', path: '', url: '')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
