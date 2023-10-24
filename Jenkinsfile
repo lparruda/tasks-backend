@@ -37,7 +37,18 @@ pipeline {
                 }
                 
             }
+        stage ('Deploy Front'){
+            steps {
+                stage ('Deploy Back'){
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+                }
+                
+            }
+                }
+                
+            }    
         }
 }
 
-
+git credentialsId: 'Github_login', url: 'https://github.com/lparruda/tasks-frontend'
