@@ -51,4 +51,4 @@ pipeline {
         }
 }
 
-git credentialsId: 'Github_login', url: 'https://github.com/lparruda/tasks-frontend'
+
