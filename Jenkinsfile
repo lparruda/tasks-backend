@@ -39,7 +39,7 @@ pipeline {
             }
         stage ('Deploy Front'){
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'Github_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                deploy adapters: [tomcat9(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
                 }
                 
             }    
@@ -47,4 +47,4 @@ pipeline {
         }
 }
 
-git credentialsId: 'Github_login', url: 'https://github.com/lparruda/tasks-frontend'
+
