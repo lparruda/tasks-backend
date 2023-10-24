@@ -39,10 +39,10 @@ pipeline {
             }
         stage ('Deploy Front'){
             steps {
-                dir('https://github.com/lparruda/tasks-frontend') {
+                dir('frontend') {
                     git credentialsId: 'Github_login', url: 'https://github.com/lparruda/tasks-frontend'
-                bat 'mvn clean package -DskipTests=true'
-                deploy adapters: [tomcat9(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                    bat 'mvn clean package -DskipTests=true'
+                    deploy adapters: [tomcat9(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
                 }   
 
               }
